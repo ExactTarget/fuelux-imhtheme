@@ -1,8 +1,7 @@
 #!/bin/sh
 
-rm -rf lib/bootstrap
-
-volo add -nostamp bootstrap
+echo "running volo add -nostamp -f bootstrap"
+volo add -nostamp -f bootstrap
 
 volo amdify lib/bootstrap/js/bootstrap-transition.js depends=jquery
 volo amdify lib/bootstrap/js/bootstrap-affix.js depends=bootstrap/bootstrap-transition
@@ -17,4 +16,5 @@ volo amdify lib/bootstrap/js/bootstrap-scrollspy.js depends=bootstrap/bootstrap-
 volo amdify lib/bootstrap/js/bootstrap-tab.js depends=bootstrap/bootstrap-transition
 volo amdify lib/bootstrap/js/bootstrap-tooltip.js depends=bootstrap/bootstrap-transition
 volo amdify lib/bootstrap/js/bootstrap-typeahead.js depends=bootstrap/bootstrap-transition
-
+echo "command presumably executed correctly, continuing..."
+echo
