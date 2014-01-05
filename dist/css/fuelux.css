@@ -7876,18 +7876,10 @@ textarea.span1,
   content: '';
 }
 
-@media (-webkit-min-device-pixel-ratio: 2) {
+@media (-webkit-min-device-pixel-ratio: 2), (min-resoulution: "192dpi") {
   .fuelux .alert:before {
-    position: absolute;
-    top: 8px;
-    left: 7px;
-    width: 22px;
-    height: 20px;
     background-image: url(../img/form-hdpi.png);
-    background-position: -67px -33px;
-    background-repeat: no-repeat;
     background-size: 96px auto;
-    content: '';
   }
 }
 
@@ -8277,7 +8269,7 @@ textarea.span1,
   font-size: 14px;
 }
 
-@media (-webkit-min-device-pixel-ratio: 2) {
+@media (-webkit-min-device-pixel-ratio: 2), (min-resoulution: "192dpi") {
   .fuelux .checkbox-custom i {
     background-image: url(../img/form-hdpi.png);
     background-size: 96px auto;
@@ -8706,7 +8698,7 @@ textarea.span1,
   font-size: 14px;
 }
 
-@media (-webkit-min-device-pixel-ratio: 2) {
+@media (-webkit-min-device-pixel-ratio: 2), (min-resoulution: "192dpi") {
   .fuelux .radio-custom i {
     background-image: url(../img/form-hdpi.png);
     background-size: 96px auto;

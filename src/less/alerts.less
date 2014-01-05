@@ -22,19 +22,12 @@
 }
 
 @media
-(-webkit-min-device-pixel-ratio: 2) {
+(-webkit-min-device-pixel-ratio: 2),
+(min-resoulution: "192dpi") {
   .alert {
     &:before {
-      content: '';
-      height: 20px;
-      left: 7px;
-      position: absolute;
-      top: 8px;
-      width: 22px;
       background-image: url(../img/form-hdpi.png);
       background-size: 96px auto;
-      background-repeat: no-repeat;
-      background-position: -67px -33px;
     }
   }
 }
