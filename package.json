@@ -38,7 +38,7 @@
   "dependencies": {
     "grunt": "~0.3.11",
     "grunt-contrib": "~0.1.0",
-    "grunt-recess": "~0.1.0"
+    "grunt-recess": "~0.2.0"
   },
   "keywords": [
     "fuelux",
