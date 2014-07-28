@@ -1,21 +1,14 @@
 {
   "name": "fuelux-imhtheme",
   "title": "Fuel UX - IMH Theme",
-  "version": "2.6.1",
-  "description": "Base Fuel UX styles and controls",
+  "version": "3.0.0",
+  "description": "Fuel UX - IMH styling",
   "homepage": "https://github.com/ExactTarget/fuelux-imhtheme",
   "author": {
     "name": "ExactTarget",
-    "email": "aalexander@exacttarget.com",
+    "email": "kparkerson@exacttarget.com",
     "url": "http://code.exacttarget.com"
   },
-  "contributors": [
-    {
-      "name": "Christopher McCulloh",
-      "email": "cmcculloh@exacttarget.com",
-      "url": "https://github.com/cmcculloh"
-    }
-  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/ExactTarget/fuelux-imhtheme.git"
@@ -23,12 +16,10 @@
   "bugs": {
     "url": "https://github.com/ExactTarget/fuelux-imhtheme/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/ExactTarget/fuelux-imhtheme/blob/master/COPYING"
-    }
-  ],
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/ExactTarget/fuelux-imhtheme/blob/master/COPYING"
+  },
   "engines": {
     "node": ">= 0.6.0"
   },
@@ -36,6 +27,21 @@
     "test": "grunt qunit"
   },
   "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.3.7",
+    "connect": "^3.0.2",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-compress": "^0.9.1",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-less": "^0.11.3",
+    "grunt-contrib-watch": "^0.6.1",
+    "volo": "^0.3.3",
+    "grunt-banner": "^0.2.3",
+    "load-grunt-tasks": "^0.6.0",
+    "grunt-text-replace": "^0.3.12"
+  },
   "keywords": [
     "fuelux",
     "fuel ux",
@@ -44,7 +50,7 @@
   "private": true,
   "volo": {
     "baseDir": "lib",
-    "url": "https://raw.github.com/ExactTarget/fuelux-imhtheme/{version}/dist/fuelux.zip",
+    "url": "https://raw.github.com/ExactTarget/fuelux-imhtheme/{version}/dist/fuelux-imhtheme.zip",
     "type": "directory",
     "dependencies": {}
   }

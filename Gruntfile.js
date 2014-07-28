@@ -2,161 +2,160 @@
 /*global module:false*/
 module.exports = function (grunt) {
 
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-compress');
-	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-qunit');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-recess');
-
 	// Project configuration.
 	grunt.initConfig({
+		// Metadata
+		banner: '/*!\n' +
+			' * Fuel UX IMH-Theme v<%= pkg.version %> \n' +
+			' * Copyright 2012-<%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n' +
+			' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n' +
+			' */\n',
+		pkg: grunt.file.readJSON('package.json'),
+
+		// Tasks configuration
 		clean: {
 			dist: ['dist/**'],
-			zipsrc: ['dist/fuelux']
+			zipsrc: ['dist/fuelux-imhtheme']
 		},
 		compress: {
 			zip: {
-				options: {
-					mode: 'zip',
-					archive: 'dist/fuelux.zip'
-				},
 				files: [
 					{
-						expand: true,
 						cwd: 'dist/',
-						src: ['fuelux/**']
+						expand: true,
+						src: ['fuelux-imhtheme/**']
 					}
-				]
+				],
+				options: {
+					archive: 'dist/fuelux-imhtheme.zip',
+					mode: 'zip'
+				}
 			}
 		},
 		copy: {
-			bootstrapImages: {
-				expand: true,
-				cwd: 'lib/bootstrap/img/',
-				src: ['**'],
-				dest: 'dist/img/'
-			},
-			fuelux: {
-				expand: true,
-				cwd: 'lib/fuelux',
-				src: ['**'],
-				dest: 'dist'
-			},
-			images: {
-				expand: true,
-				cwd: 'src/img/',
-				src: ['**'],
-				dest: 'dist/img/'
-			},
+			/*fonts: {
+			 cwd: 'fonts/',
+			 dest: 'dist/fonts/',
+			 expand: true,
+			 filter: 'isFile',
+			 src: ['*']
+			 },*/
 			zipsrc: {
-				expand: true,
 				cwd: 'dist/',
-				src: ['**'],
-				dest: 'dist/fuelux/'
+				dest: 'dist/fuelux-imhtheme/',
+				expand: true,
+				src: ['**']
 			}
 		},
-		jshint: {
-			options: {
-				curly: false,
-				eqeqeq: true,
-				immed: true,
-				latedef: true,
-				newcap: true,
-				noarg: true,
-				sub: true,
-				undef: true,
-				unused: true,
-				boss: true,
-				eqnull: true,
-				browser: true,
-				globals: {
-					jQuery: true,
-					define: true,
-					require: true
-				}
-			},
-			source: ['Gruntfile.js', 'src/**/*.js'],
-			tests: {
+		connect: {
+			server: {
 				options: {
-					undef: false,
-					unused: false,
-					latedef: false
+					hostname: '*',
+					port: 8000
+				}
+			}
+		},
+		less: {
+			'bootstrap-css': {
+				options: {
+					strictMath: true,
+					sourceMap: true,
+					outputSourceFiles: true,
+					sourceMapURL: 'bootstrap-css.css.map',
+					sourceMapFilename: 'dist/css/bootstrap-css.css.map'
 				},
 				files: {
-					src: ['test/**/*.js']
+					'dist/css/bootstrap-css.css': 'less/bootstrap-css/bootstrap-css.less'
+				}
+			},
+			'fuelux-imhtheme': {
+				options: {
+					strictMath: true,
+					sourceMap: true,
+					outputSourceFiles: true,
+					sourceMapURL: '<%= pkg.name %>.css.map',
+					sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
+				},
+				files: {
+					'dist/css/fuelux-imhtheme.css': 'less/fuelux-imhtheme.less'
+				}
+			},
+			'fuelux-controls': {
+				options: {
+					strictMath: true,
+					sourceMap: true,
+					outputSourceFiles: true,
+					sourceMapURL: 'fuelux-controls.css.map',
+					sourceMapFilename: 'dist/css/fuelux-controls.css.map'
+				},
+				files: {
+					'dist/css/fuelux-controls.css': 'less/fuelux-controls/fuelux-controls.less'
+				}
+			},
+			minify: {
+				options: {
+					cleancss: true,
+					report: 'min'
+				},
+				files: {
+					'dist/css/bootstrap-css.min.css': 'dist/css/bootstrap-css.css',
+					'dist/css/fuelux-controls.min.css': 'dist/css/fuelux-controls.css',
+					'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css'
 				}
 			}
 		},
-		pkg: grunt.file.readJSON('package.json'),
-		qunit: {
-			simple: ['test/**/*.html']
-		},
-		recess: {
-			compile: {
-				src: ['src/less/fuelux.less'],
-				dest: 'dist/css/fuelux.css',
-				options: {
-					compile: true
-				}
-			},
-			compile_responsive: {
-				src: ['src/less/fuelux-responsive.less'],
-				dest: 'dist/css/fuelux-responsive.css',
-				options: {
-					compile: true
-				}
-			},
-			compress: {
-				src: ['src/less/fuelux.less'],
-				dest: 'dist/css/fuelux.min.css',
-				options: {
-					compile: true,
-					compress: true
-				}
-			},
-			compress_responsive: {
-				src: ['src/less/fuelux-responsive.less'],
-				dest: 'dist/css/fuelux-responsive.min.css',
-				options: {
-					compile: true,
-					compress: true
-				}
+		replace: {
+			imgpaths: {
+				overwrite: true,
+				replacements:[
+					{
+						from: "'../../img",
+						to: "'../img"
+					}
+				],
+				src: [
+					'dist/css/fuelux-imhtheme.css',
+					'dist/css/fuelux-imhtheme.css.map'
+				]
 			}
 		},
-		uglify: {
-			options: {
-				banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-					'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-					'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-					'* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-					' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n'
-			},
-			all: {
+		usebanner: {
+			dist: {
+				options: {
+					position: 'top',
+					banner: '<%= banner %>'
+				},
 				files: {
-					'dist/all.min.js': ['dist/all.js']
-				}
-			},
-			loader: {
-				files: {
-					'dist/loader.min.js': ['dist/loader.js']
+					src: [
+						'dist/css/<%= pkg.name %>.css',
+						'dist/css/<%= pkg.name %>.min.css'
+					]
 				}
 			}
 		},
 		watch: {
-			files: ['Gruntfile.js', 'lib/**', 'src/**', 'test/**'],
-			tasks: ['quicktest', 'quickcss']
+			files: ['less/**'],
+			tasks: ['distcss']
 		}
 	});
 
-	grunt.registerTask('quicktest', ['jshint', 'qunit:simple']);
+	// Look ma! Load all grunt plugins in one line from package.json
+	require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
 
-	grunt.registerTask('quickcss', ['recess:compile', 'recess:compile_responsive']);
-	grunt.registerTask('fullcss', ['quickcss', 'recess:compress', 'recess:compress_responsive']);
+	/* -------------
+	 BUILD
+	 ------------- */
 
-	grunt.registerTask('default', ['quicktest', 'clean:dist', 'copy:bootstrapImages', 'copy:fuelux', 'copy:images', 'fullcss', 'uglify', 'copy:zipsrc', 'compress', 'clean:zipsrc']);
-	grunt.registerTask('devserver', ['quicktest', 'quickcss', 'watch']);
+	// CSS distribution task
+	grunt.registerTask('distcss', ['less:bootstrap-css', 'less:fuelux-controls', 'less:fuelux-imhtheme', 'replace:imgpaths', 'less:minify', 'usebanner']);
+
+	// ZIP distribution task
+	grunt.registerTask('distzip', ['copy:zipsrc', 'compress', 'clean:zipsrc']);
+
+	// Full distribution task
+	grunt.registerTask('dist', ['clean:dist', 'distcss', /*'copy:fonts',*/ 'distzip']);
+
+	//The default build task
+	grunt.registerTask('default', ['dist']);
 
 };
