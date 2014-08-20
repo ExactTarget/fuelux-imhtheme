@@ -38,7 +38,16 @@ module.exports = function (grunt) {
 				dest: 'dist/imhtheme/',
 				expand: true,
 				src: ['**']
+			},
+			imhtheme: {
+				cwd: 'dist/css/',
+				dest: 'docs/bootstrap-master/docs/assets/css',
+				expand: true,
+				src: ['**']
 			}
+		},
+		unzip: {
+			'docs': 'docs.zip'
 		},
 		connect: {
 			server: {
@@ -53,6 +62,10 @@ module.exports = function (grunt) {
 					port: 9000		// allows main server to be run simultaneously 
 				}
 			}
+		},
+		curl: {
+		// Micro libraries via http://microjs.com/
+			'docs.zip': 'https://github.com/twbs/bootstrap/archive/master.zip'
 		},
 		less: {
 			'imhtheme': {
