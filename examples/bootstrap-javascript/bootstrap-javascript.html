@@ -233,15 +233,15 @@
 		<h2 id="alerts-examples">Example alerts</h2>
 		<p>Add dismiss functionality to all alert messages with this plugin.</p>
 		<div class="bs-example">
-			<div class="alert alert-warning fade in">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<div class="alert alert-dismissible alert-warning fade in" role="alert">
+				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 				<strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
 			</div>
 		</div><!-- /example -->
 
 		<div class="bs-example">
-			<div class="alert alert-danger fade in">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<div class="alert alert-danger alert-dismissible fade in" role="alert">
+				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 				<h4>Oh snap! You got an error!</h4>
 				<p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
 				<p>
@@ -250,7 +250,6 @@
 				</p>
 			</div>
 		</div><!-- /example -->
-
 
 		<h1 class="section">Buttons</h1>
 		<hr class="darker"/>
