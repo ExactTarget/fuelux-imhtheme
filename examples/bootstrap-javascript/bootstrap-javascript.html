@@ -18,6 +18,18 @@
 
 	<script src="../../bower_components/jquery/dist/jquery.js"></script>
 	<script src="../../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+	<script type="text/javascript">
+		$(function(){
+			$('button[data-loading-text]:first').click(function () {
+				var btn = $(this);
+				btn.button('loading');
+				setTimeout(function(){
+					btn.button('reset');
+				}, 3000);
+			});
+		});
+	</script>
 </head>
 <body>
 
@@ -396,12 +408,5 @@
 		<p>The side navigation is an example of affix.</p>
 
 	</div>
-
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	<script src="//www.fuelcdn.com/fuelux/3.0.0/js/fuelux.min.js"></script>
-
-	<script src="../../bower_components/holderjs/holder.js"></script>
-
 </body>
 </html>
