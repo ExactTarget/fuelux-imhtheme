@@ -46,7 +46,7 @@ module.exports = function (grunt) {
 				expand: true,
 				src: ['**']
 			},
-			imhtheme: {
+			docscss: {
 				cwd: 'dist/css/',
 				dest: 'docs/dist/css/',
 				expand: true,
@@ -54,6 +54,12 @@ module.exports = function (grunt) {
 		      rename: function (dest, src) {
 		        return dest + src.replace(/imh/g, 'bootstrap-');
 		    }
+			},
+			docsimg: {
+				cwd: 'dist/img/',
+				dest: 'docs/dist/img/',
+				expand: true,
+				src: ['**']
 			}
 		},
 		unzip: {
@@ -155,6 +161,8 @@ module.exports = function (grunt) {
 
 	//The default build task
 	grunt.registerTask('default', ['dist']);
+
+	grunt.registerTask('docs', ['dist', 'copy:docscss', 'copy:docsimg']);
 
 	/* -------------
 			SERVE
