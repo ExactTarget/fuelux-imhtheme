@@ -41,9 +41,12 @@ module.exports = function (grunt) {
 			},
 			imhtheme: {
 				cwd: 'dist/css/',
-				dest: 'docs/bootstrap-master/docs/assets/css',
+				dest: 'docs/dist/css/',
 				expand: true,
-				src: ['**']
+				src: ['**'],
+		      rename: function (dest, src) {
+		        return dest + src.replace(/imh/g, 'bootstrap-');
+		    }
 			}
 		},
 		unzip: {
