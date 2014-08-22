@@ -1,5 +1,7 @@
 # filesystem
 .DS_Store
+_gh_pages
+_site
 
 # dependencies
 node_modules
