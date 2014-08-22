@@ -2534,4 +2534,7 @@ a.list-group-item-danger.active:focus {
   margin: -1px -1px 0;
   padding: 4px 8px;
 }
+.fuelux .loader {
+  color: #468ac5;
+}
 /*# sourceMappingURL=fuelux-imhtheme.css.map */
