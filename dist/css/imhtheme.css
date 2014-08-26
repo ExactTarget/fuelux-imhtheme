@@ -362,7 +362,8 @@ fieldset[disabled] .btn-secondary.active {
 .btn-secondary.btn-lg {
   padding: 6px 10px;
 }
-.btn-secondary.btn-sm {
+.btn-secondary.btn-sm,
+.btn-secondary.btn-xs {
   padding: 2px 8px;
 }
 .btn-success {
@@ -609,7 +610,8 @@ fieldset[disabled] .btn-link:focus {
   font-size: 12px;
   border-radius: 4px;
 }
-.btn-sm {
+.btn-sm,
+.btn-xs {
   padding: 3px 8px;
   font-size: 10px;
   border-radius: 3px;
@@ -2573,6 +2575,12 @@ a.list-group-item-danger.active:focus {
 }
 .fuelux .combobox.disabled .dropdown-toggle {
   visibility: hidden;
+}
+.fuelux .loader {
+  color: #468ac5;
+}
+.fuelux .placard-cancel {
+  font-size: 10px;
 }
 .fuelux .spinbox {
   border: solid 1px #bbbbbb;

@@ -8,8 +8,13 @@
 	<!--<link href="http://www.fuelcdn.com/fonts/neue-helvetica.css" rel="stylesheet" type="text/css"/>-->
 	<link href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="../../bower_components/fuelux/dist/css/fuelux.css" rel="stylesheet" type="text/css">
-	<link href="../../dist/css/imhtheme.css" rel="stylesheet" type="text/css">
-	<link href="fuelux-examples.css" rel="stylesheet" type="text/css">
+
+	<!--<link href="../../dist/css/imhtheme.css" rel="stylesheet" type="text/css">-->
+
+	<!--CLIENT-SIDE LESS COMPILATION FOR WATCHER-LESS DEV-->
+	<link href="../../less/imhtheme.less" rel="stylesheet/less" type="text/css"/>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.0/less.min.js"></script>
+	<script type="text/javascript">if(window.console && window.console.clear){ window.console.clear(); }</script>
 
 	<link href="fuelux-examples.css" rel="stylesheet" type="text/css">
 
@@ -46,7 +51,7 @@
 					jquery: jQueryPath,
 					underscore: '../../bower_components/underscore/underscore',
 					bootstrap: '../../bower_components/bootstrap/dist/js/bootstrap',
-					moment: '../../bower_components/moment/min/moment-with-langs', // comment out if you dont want momentjs to be default
+					//moment: '../../bower_components/moment/min/moment-with-langs', // comment out if you dont want momentjs to be default
 					fuelux: '../../bower_components/fuelux/js'
 				},
 				shim: {
@@ -57,7 +62,11 @@
 				}
 			});
 		})();
-		require(['jquery', 'moment', 'index'], function($){});
+		require(['jquery', 'index'], function($){
+			setTimeout(function(){
+				if(window.console && window.console.clear){ window.console.clear(); }
+			}, 100);
+		});
 	</script>
 </head>
 
@@ -534,11 +543,11 @@
 
 				<div id="MyPlacard2" class="placard" data-initialize="placard" data-ellipsis="true">
 					<div class="placard-popup"></div>
-					<div class="placard-header"><h5>Field label</h5></div>
+					<div class="placard-header"><h6>Field label</h6></div>
 					<input class="form-control placard-field" type="text" placeholder="[Field label]"/>
 					<div class="placard-footer">
-						<button class="btn btn-primary btn-xs placard-accept" type="button">Save</button>
 						<a class="placard-cancel" href="#">Cancel</a>
+						<button class="btn btn-primary btn-xs placard-accept" type="button">Save</button>
 					</div>
 				</div>
 
